@@ -29,8 +29,11 @@ public class Course {
 //            mappedBy = "courses")
 //    private Set<Student>students=new HashSet<>();
 
-    @ManyToMany(mappedBy="courses")
-    private List<Student> students = new ArrayList<>();
+//    @ManyToMany(mappedBy = "courses")
+    @ManyToMany(targetEntity = Student.class, cascade = CascadeType.ALL)
+    private List<Student> students=new ArrayList<>();
+
+
 
     public Course() {
 
@@ -80,6 +83,14 @@ public class Course {
 
     public void setFee(double fee) {
         this.fee = fee;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
     }
 
 
